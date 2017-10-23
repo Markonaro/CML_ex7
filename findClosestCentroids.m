@@ -21,10 +21,22 @@ idx = zeros(size(X,1), 1);
 % Note: You can use a for-loop over the examples to compute this.
 %
 
-
-
-
-
+% For every point in dataset X
+for xi = 1:length(idx)
+    
+    % Initialize a vector to store the distance between xi & each centroid
+    dist = zeros(K, 1);
+    for k = 1:K
+        % Store the distance between X(i) and centroids(k) in dist(k)
+        dist(k) = sum((X(xi,:)-centroids(k,:)).^2);
+    end
+    
+    % Ignoring the actual distance, extract the index of the minimum dist.
+    [value, index] = min(dist);
+    
+    % Assign the index of closest centroid to idx(xi)
+    idx(xi) = index;
+end
 
 
 % =============================================================
