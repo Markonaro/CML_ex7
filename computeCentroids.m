@@ -26,12 +26,15 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 
-
-
-
-
-
-
+for k = 1:K
+    % Create a vector that identifies all of the examples from X
+    % that are currently assigned to centroid k
+    ci = idx == k;
+	
+    % Assign the mean value (sum/occurances) to the centroids matrix
+    % of K centroids with n features (same as X)
+    centroids(k,:) = sum(X(ci, :)) ./ size(X(ci), 1);
+end
 
 % =============================================================
 
