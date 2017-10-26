@@ -29,6 +29,10 @@ for i = 1:size(Z, 1)
 	X_rec(i, :) = v * U(:, 1:K)';
 end
 
+% NOTE: Recommended assignment of v involves transposing Z(i) to a column
+%       vector, simply to transpose it back to a row, so the process has 
+%       been optimized by removing this "double negative" operation.
+
 % =============================================================
 
 end

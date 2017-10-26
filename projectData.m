@@ -22,11 +22,14 @@ Z = zeros(size(X, 1), K);
 for i = 1:size(X, 1)
     % Extract training example i as a row vector
     x = X(i, :);
-    
     % Map each dimension via each eiganvector, assign it to its
     % corresponding Z-matrix ID
     Z(i, :) = x * U(:, 1:K);
 end
+
+% NOTE: Recommended assignment of x involves transposing X(i) to a column
+%       vector, simply to transpose it back to a row, so the process has 
+%       been optimized by removing this "double negative" operation.
 
 % =============================================================
 
