@@ -15,11 +15,25 @@ Z = zeros(size(X, 1), K);
 %               For the i-th example X(i,:), the projection on to the k-th 
 %               eigenvector is given as follows:
 %                    x = X(i, :)';
-%                    projection_k = x' * U(:, k);
+%                    
 %
 
-
-
+% For every example in dataset X
+for i = 1:size(X, 1)
+    % Extract training example i as a row vector
+    x = X(i, :);
+    
+    % For every dimension to which we're going to project example i
+    for k = 1:K
+        % Map example x onto each dimensions 1:K via eiganvectors U
+        projection_k = x * U(:, k);
+        
+        % Assign each dimension mapping of each example to its
+        % corresponding Z-matrix ID
+        Z(i, k) = projection_k;
+        
+    end
+end
 
 % =============================================================
 
