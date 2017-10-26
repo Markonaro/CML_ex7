@@ -21,7 +21,13 @@ X_rec = zeros(size(Z, 1), size(U, 1));
 %               Notice that U(j, 1:K) is a row vector.
 %               
 
-
+% For every example in mapped dataset Z
+for i = 1:size(Z, 1)
+	% Extract the ith example with all of its reduced dimensionality
+    v = Z(i, :);
+    % "Unmap" projected example i and assign it to its respective X_rec ID
+	X_rec(i, :) = v * U(:, 1:K)';
+end
 
 % =============================================================
 
